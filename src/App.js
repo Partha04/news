@@ -10,7 +10,10 @@ function App() {
   const [news, setNews] = useState([]);
 
   const [qry, setQry] = useState("");
-
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [news])
 
 
   const setQuery=(q)=>{
@@ -41,7 +44,7 @@ function App() {
       },} )
     .then(prp=>{
       console.log(prp);
-      toast.success("Successfull")
+      toast.success("Successfull");
       setNews(prp.data.articles);
     })
     .catch(err=>{
@@ -71,7 +74,7 @@ function App() {
     <div className="App">
       <Navbar setQuery={setQuery} SearchByCategory={SearchByCategory} searchBySources={searchBySources} searchNews={searchNews} qry={qry} />
       <div class="newscontainer">
-      <ToastContainer autoClose={1500} />
+      <ToastContainer position="bottom-right" autoClose={1500} />
 
       {news.map((entry) => {
         return <Card entry={entry} />;

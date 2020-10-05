@@ -20,8 +20,9 @@ app.get("/news", async (req, res) => {
       },
       params: {
         q: req.query.qry,
+        pageSize:50,
         sources:
-          "bbc-news,the-hindu,google-news,google-news-in,the-times-of-india",
+        "bbc-news,the-hindu,google-news,google-news-in,the-times-of-india",
       },
     })
     .then((data) => {
@@ -35,12 +36,13 @@ app.get("/news", async (req, res) => {
 app.get("/category", async (req, res) => {
   console.log("called in category in server");
   await axios
-    .get("https://newsapi.org/v2/top-headlines", {
+  .get("https://newsapi.org/v2/top-headlines", {
       headers: {
         "X-Api-Key": "0cc387f4b77f4ed88b4989e9d38b9c21",
       },
       params: {
         category: req.query.category,
+        pageSize:100
       },
     })
     .then((data) => {
@@ -59,6 +61,7 @@ app.get("/sources", async (req, res) => {
       },
       params: {
         sources: req.query.sources,
+        pageSize:100
       },
     })
     .then((data) => {
@@ -67,11 +70,12 @@ app.get("/sources", async (req, res) => {
     .catch((err) => {
       console.log(err);
     });
-});
-
-
-
-
-app.listen(5000, () => {
-  console.log("server on");
-});
+  });
+  
+  
+  
+  
+  app.listen(5000, () => {
+    console.log("server on");
+  });
+  

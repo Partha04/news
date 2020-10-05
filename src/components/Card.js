@@ -1,4 +1,5 @@
 import React from "react";
+import ReactHtmlParser from 'react-html-parser';
 
 const Card = ({ entry }) => {
   return (
@@ -6,8 +7,8 @@ const Card = ({ entry }) => {
       <img src={entry.urlToImage} className="card-img-top mt-3" alt="" />
       <div className="card-body">
         <h5 className="card-title">{entry.title}</h5>
-        <p className="card-text">{entry.description}</p>
-        <a href={entry.url} className="btn btn-primary">
+        <p className="card-text">{ ReactHtmlParser(entry.description) }</p>
+        <a href={entry.url} className="btn btn-primary" target="_blank">
           read more
         </a>
         <blockquote class="blockquote mb-0">
