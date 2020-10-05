@@ -75,7 +75,7 @@ app.get("/sources", async (req, res) => {
   
   
   
-  app.listen(5000, () => {
+  app.listen(5000||process.env.PORT, () => {
     console.log("server on");
   });
   
